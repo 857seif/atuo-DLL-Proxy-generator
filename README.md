@@ -2,9 +2,8 @@
 
 ---
 
-atuo-DLL-Proxy-generator
 
-🦀 Rust DLL Proxy Generator
+Rust DLL Proxy Generator
 
 A lightweight yet powerful tool designed to automate the creation of DLL Proxy projects using Rust. This tool removes the manual complexity of building proxy DLLs by automatically extracting exports and generating a fully functional Rust project ready for compilation.
 
