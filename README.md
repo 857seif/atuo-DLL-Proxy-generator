@@ -1,5 +1,10 @@
 
-# Rust DLL Proxy Generator
+
+---
+
+atuo-DLL-Proxy-generator
+
+🦀 Rust DLL Proxy Generator
 
 A lightweight yet powerful tool designed to automate the creation of DLL Proxy projects using Rust. This tool removes the manual complexity of building proxy DLLs by automatically extracting exports and generating a fully functional Rust project ready for compilation.
 
@@ -51,10 +56,10 @@ The original DLL is never modified — only read for export extraction
 ⚙️ How It Works
 
 1. Select Target DLL
+
 Choose the original DLL (e.g., steam_api64.dll)
 
-
-2. Configure 
+2. Configure
 
 Project Name
 
@@ -63,18 +68,15 @@ Proxy DLL Name
 Original DLL Name (renamed version)
 
 
-
 3. Generate Project
+
 The tool creates a fully structured Rust project ready to build
 
 
-
-
 ---
-```
 
 📁 Generated Project Structure
-
+```
 your_generated_proxy/
 │
 ├── src/
@@ -110,11 +112,10 @@ build.bat
 The tool parses the Portable Executable (PE) structure of the DLL and extracts:
 
 Function Names
-
+```
 Ordinals
-
+```
 Entry Points
-
 
 This ensures full compatibility with the original DLL, even for edge cases.
 
@@ -152,26 +153,148 @@ This bridges Rust with the Windows linker (link.exe) and enables automatic expor
 
 ---
 
-💡 Why Use This Tool?
+🔬 Advanced Usage
 
-Speed
-Avoid writing hundreds of export forwarding lines manually
+🔹 Inject Custom Logic
+```
+Modify src/lib.rs to execute your own code before forwarding:
 
-Automation
-One-click generation instead of a multi-step manual process
+Logging function calls
 
-Rust Power
-Use a modern, memory-safe language for low-level Windows internals
+Hooking specific APIs
 
-Flexibility
-Easily inject custom logic into src/lib.rs
+Initializing overlays or tools
+
+Runtime patching
+
+```
+
+---
+
+🔹 Selective Hooking
+
+Instead of forwarding everything blindly, you can:
+
+Intercept specific functions
+
+Override their behavior
+
+Forward only when needed
+
+
+
+---
+
+🔹 Chaining Proxies
+```
+App → Proxy1 → Proxy2 → Original DLL
+```
+Useful for:
+
+Layered debugging
+
+Multi-stage injection systems
+
+Complex analysis workflows
+
+
+
+---
+
+🧪 Real-World Workflow
+
+1. Generate proxy from target DLL
+
+
+2. Rename original DLL (e.g., original.dll)
+
+
+3. Place proxy DLL with original name
+
+
+4. Launch target application
+
+
+5. Execute custom logic automatically
+
+
+
+
+---
+Safety & Design Philosophy
+
+Non-destructive → Never modifies the original DLL
+
+Transparent → Maintains full compatibility
+
+Lightweight → Fast generation process
+
+Developer-focused → Full control without limitations
+
+
+
+---
+
+⚡ Performance
+```
+.def forwarding is handled by the Windows loader → extremely fast
+```
+No overhead unless you add custom logic
+
+Scales well even with large export tables
+
+
+
+---
+
+🧠 Technical Deep Dive
+
+🔹 Why .def?
+```
+Prevents name mangling issues
+
+Preserves ordinals
+
+Ensures exact export matching
+
+Cleaner than manual pragma exports
+```
+
+
+---
+
+🔹 PE Parsing
+
+The tool reads:
+
+DOS Header
+
+NT Headers
+
+Export Directory
+
+
+This guarantees accurate extraction without external tools.
+
+
+---
+
+🔹 Linker Automation
+
+Handled via build.rs, which:
+
+Injects linker arguments
+
+Connects .def with Rust build system
+
+Eliminates manual configuration
 
 
 
 ---
 
 🧩 Use Cases
-
+``
 DLL Proxying / DLL Hijacking
 
 Game Modding & Injection
@@ -179,6 +302,38 @@ Game Modding & Injection
 Reverse Engineering
 
 API Monitoring & Debugging
+
+``
+
+---
+
+🧩 Extensibility Ideas
+
+Plugin system for hooks
+
+Auto hook templates (logging/tracing)
+
+Export filtering (partial proxy generation)
+
+Debugger integration (x64dbg / WinDbg)
+
+GUI enhancements (preview exports, drag & drop)
+
+
+
+---
+
+📌 Future Improvements
+
+Better error handling for malformed PE files
+
+Export viewer inside GUI
+
+One-click build & inject
+
+Cross-platform analysis support
+
+Advanced research integrations
 
 
 
@@ -190,16 +345,32 @@ Architecture Mismatch
 Ensure Rust target matches the DLL (x64 or x86)
 
 Missing Dependencies
-Install MSVC Build Tools (required for linking)
+Install MSVC Build Tools
 
 Permission Issues
-Make sure you have access if working inside protected folders
+Ensure access to protected directories
 
 
 
 ---
 
-⚖️ Disclaimer
+🤝 Contributing
+
+Contributions are welcome!
+
+Improve parsing logic
+
+Enhance GUI
+
+Add features
+
+Fix edge cases
+
+
+
+---
+
+Disclaimer
 
 This project is intended for educational and research purposes only.
 Always respect software licenses and use responsibly.
@@ -209,6 +380,7 @@ Always respect software licenses and use responsibly.
 Final Note
 
 This tool is designed to eliminate repetitive low-level work and let you focus on what actually matters:
+
 analysis, hooking, and custom logic.
 
 
