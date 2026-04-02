@@ -54,7 +54,7 @@ The original DLL is never modified — only read for export extraction
 Choose the original DLL (e.g., steam_api64.dll)
 
 
-2. Configure المشروع
+2. Configure 
 
 Project Name
 
