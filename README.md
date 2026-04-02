@@ -24,6 +24,7 @@ cargo build --release
 ```
 or you can run the build.bat 
 but you should have cargo 😄
+
 Technical Details
 ​Target Architecture: Automatically detects and generates proxies for x64 and x86 binaries.
 ​Linker Flags: Utilizes custom linker arguments within build.rs to ensure proper .def file integration.
