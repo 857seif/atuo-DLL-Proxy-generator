@@ -71,6 +71,7 @@ The tool creates a fully structured Rust project ready to build
 
 
 ---
+```
 
 📁 Generated Project Structure
 
@@ -83,18 +84,18 @@ your_generated_proxy/
 ├── Cargo.toml        # Rust project configuration
 ├── build.rs          # Linker integration script
 
-
+```
 ---
 
 🔧 Build Instructions
-
+```
 cd your_generated_proxy
 cargo build --release
-
+```
 Or simply run:
-
+```
 build.bat
-
+```
 > ⚠️ Requires Rust (cargo) and MSVC Build Tools installed
 
 
@@ -141,11 +142,11 @@ Seamless forwarding to the original DLL
 3. Rust Build Integration
 
 The generated build.rs ensures proper linking:
-
+```
 fn main() {
     println!("cargo:rustc-link-arg=/DEF:Forwarded.def");
 }
-
+```
 This bridges Rust with the Windows linker (link.exe) and enables automatic export forwarding without manual configuration.
 
 
@@ -205,8 +206,7 @@ Always respect software licenses and use responsibly.
 
 
 ---
-
-🧨 Final Note
+Final Note
 
 This tool is designed to eliminate repetitive low-level work and let you focus on what actually matters:
 analysis, hooking, and custom logic.
