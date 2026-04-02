@@ -24,3 +24,11 @@ cargo build --release
 ```
 or you can run the build.bat 
 but you should have cargo 😄
+Technical Details
+​Target Architecture: Automatically detects and generates proxies for x64 and x86 binaries.
+​Linker Flags: Utilizes custom linker arguments within build.rs to ensure proper .def file integration.
+​Binary Safety: The generator does not modify the original DLL; it only reads the export table to ensure binary integrity.
+​Why use this?
+​Speed: Skip writing hundreds of pragma comment lines manually.
+​Rust Power: Benefit from Rust's safety and modern tooling while performing low-level DLL hijacking or proxying tasks.
+​Customization: Easily inject your own logic into the generated src/lib.rs while the proxy handles the rest.
