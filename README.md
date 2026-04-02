@@ -45,11 +45,13 @@ The generated .def file uses the following syntax for every exported function:
 FunctionName=OriginalDllName.FunctionName
 This tells the Windows Loader to redirect calls to the original DLL (which you should rename according to your configuration) while allowing your proxy DLL to execute its own code first (e.g., in DllMain).
 3. Rust Build Script (build.rs) Integration
-To bridge the gap between Rust and the Windows Linker, the tool generates a build.rs that includes:
+To bridge the gap between Rust and the Windows Linker, the tool generates a build.rs that 
+```
+includes:
 fn main() {
     println!("cargo:rustc-link-arg=/DEF:Forwarded.def");
 }
-
+```
 This ensures that the Forwarded.def file is correctly passed to link.exe during the compilation process, enabling seamless proxying without manual linker configuration.
 Troubleshooting & Common Issues
  * Architecture Mismatch: Ensure that the Rust target (x86_64-pc-windows-msvc or i686-pc-windows-msvc) matches the architecture of the original DLL.
