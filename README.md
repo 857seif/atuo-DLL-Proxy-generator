@@ -294,7 +294,8 @@ Eliminates manual configuration
 ---
 
 🧩 Use Cases
-``
+
+```
 DLL Proxying / DLL Hijacking
 
 Game Modding & Injection
@@ -303,7 +304,7 @@ Reverse Engineering
 
 API Monitoring & Debugging
 
-``
+```
 
 ---
 
