@@ -355,7 +355,8 @@ Ensure access to protected directories
 ---
 
 🤝 Contributing
-
+Thanks for https://github.com/NotAndreh
+🥰
 Contributions are welcome!
 
 Improve parsing logic
